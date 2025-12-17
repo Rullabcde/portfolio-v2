@@ -48,7 +48,7 @@ export function ContactSection() {
             href="mailto:choirulrasyid09@gmail.com"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-3 px-10 py-5 bg-[#FF1E56] text-white font-semibold text-lg rounded-xl hover:shadow-[0_0_60px_rgba(255,30,86,0.3)] transition-all duration-300 mb-8"
+            className="inline-flex items-center gap-3 px-10 py-5 bg-[#D91847] text-white font-semibold text-lg rounded-xl hover:bg-[#FF1E56] hover:shadow-[0_0_60px_rgba(255,30,86,0.3)] transition-all duration-300 mb-8"
           >
             Get in touch
             <ArrowUpRight className="w-5 h-5" />
@@ -65,8 +65,11 @@ export function ContactSection() {
           >
             <span className="text-gray-500">$</span>
             <span className="text-gray-300 font-mono">echo &quot;choirulrasyid09@gmail.com&quot;</span>
-            <button className="text-gray-500 hover:text-[#FF1E56] transition-colors">
-              {copied ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
+            <button 
+              className="text-gray-500 hover:text-[#FF1E56] transition-colors"
+              aria-label={copied ? "Email copied" : "Copy email address to clipboard"}
+            >
+              {copied ? <Check className="w-4 h-4 text-green-500" aria-hidden="true" /> : <Copy className="w-4 h-4" aria-hidden="true" />}
             </button>
           </motion.div>
 
@@ -89,8 +92,9 @@ export function ContactSection() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 + index * 0.1 }}
                 className="group p-4 rounded-xl border border-white/10 hover:border-[#FF1E56]/30 bg-white/5 hover:bg-[#FF1E56]/5 transition-all duration-300"
+                aria-label={social.name}
               >
-                <social.icon className="w-5 h-5 text-gray-400 group-hover:text-[#FF1E56] transition-colors" />
+                <social.icon className="w-5 h-5 text-gray-400 group-hover:text-[#FF1E56] transition-colors" aria-hidden="true" />
               </motion.a>
             ))}
           </motion.div>

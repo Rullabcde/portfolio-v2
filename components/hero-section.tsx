@@ -58,7 +58,7 @@ export function HeroSection() {
         >
           <a
             href="#projects"
-            className="px-8 py-4 bg-[#FF1E56] text-white font-semibold rounded-xl hover:bg-[#FF1E56]/90 transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,30,86,0.3)]"
+            className="px-8 py-4 bg-[#D91847] text-white font-semibold rounded-xl hover:bg-[#FF1E56] transition-all duration-300 hover:shadow-[0_0_40px_rgba(255,30,86,0.3)]"
           >
             View Projects
           </a>
@@ -68,8 +68,9 @@ export function HeroSection() {
             <button 
               onClick={() => navigator.clipboard.writeText('ssh choirul@portfolio')}
               className="text-gray-500 hover:text-[#FF1E56] transition-colors"
+              aria-label="Copy SSH command to clipboard"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
               </svg>
             </button>
