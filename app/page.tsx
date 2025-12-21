@@ -1,30 +1,23 @@
-import dynamic from "next/dynamic";
 import { HeroSection } from "@/components/hero-section";
+import { SkillsSection } from "@/components/skills-section";
+import { ProjectsSection } from "@/components/projects-section";
+import { TimelineSection } from "@/components/timeline-section";
+import { ContactSection } from "@/components/contact-section";
+import { SpotifySection } from "@/components/spotify-section";
 import { Navbar } from "@/components/navbar";
-
-// Lazy load below-fold components to reduce initial JS bundle
-const ProjectsSection = dynamic(
-  () => import("@/components/projects-section").then((m) => ({ default: m.ProjectsSection })),
-  { ssr: true }
-);
-const TimelineSection = dynamic(
-  () => import("@/components/timeline-section").then((m) => ({ default: m.TimelineSection })),
-  { ssr: true }
-);
-const ContactSection = dynamic(
-  () => import("@/components/contact-section").then((m) => ({ default: m.ContactSection })),
-  { ssr: true }
-);
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white overflow-x-hidden selection:bg-[#FF1E56]/30 selection:text-white">
+    <main className="min-h-screen">
+      <div className="flex flex-col gap-16 pb-20">
+        <HeroSection />
+        <SkillsSection />
+        <TimelineSection />
+        <ProjectsSection />
+        <ContactSection />
+        <SpotifySection />
+      </div>
       <Navbar />
-      <HeroSection />
-      {/* <TechStack /> */}
-      <ProjectsSection />
-      <TimelineSection />
-      <ContactSection />
     </main>
   );
 }

@@ -1,24 +1,24 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Briefcase, GraduationCap, Award, ExternalLink, Calendar } from "lucide-react";
+import BlurFade from "@/components/ui/blur-fade";
+import { ExternalLink } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 const experiences = [
   {
-    type: "work",
     title: "Junior System Administrator",
     org: "PT. Jetorbit Indonesia",
     date: "May 2025 - Present",
-    description: "Managing server infrastructure and ensuring uptime.",
-    icon: Briefcase,
+    description: "Managing server infrastructure and ensuring uptime. Implementing automated backup solutions and monitoring systems.",
+    logo: "/jetorbit.jpg",
   },
   {
-    type: "education",
     title: "Sistem Informasi Jaringan dan Aplikasi",
     org: "SMK Negeri 2 Yogyakarta",
     date: "2022 - Present",
-    description: "Linux administration, networking, and infrastructure automation.",
-    icon: GraduationCap,
+    description: "Specializing in Linux administration, cloud networking, and infrastructure automation.",
+    logo: "/smk2yk.jpeg",
   },
 ];
 
@@ -27,123 +27,109 @@ const certifications = [
     title: "Belajar Jaringan Komputer untuk Pemula",
     issuer: "Dicoding Indonesia",
     link: "https://www.dicoding.com/certificates/1OP82K86LPQK",
+    logo: "/dicoding.png",
   },
   {
     title: "Belajar Dasar-Dasar DevOps",
     issuer: "Dicoding Indonesia",
     link: "https://www.dicoding.com/certificates/1RXYE87VKZVM",
+    logo: "/dicoding.png",
   },
   {
     title: "AI Praktis untuk Produktivitas",
     issuer: "Dicoding Indonesia",
     link: "https://www.dicoding.com/certificates/6RPNRMD78X2M",
+    logo: "/dicoding.png",
   },
 ];
 
 export function TimelineSection() {
   return (
-    <section id="experience" className="py-24 px-4 relative">
-      {/* Background */}
-      <div className="absolute inset-0 dot-pattern opacity-30" />
-      
-      <div className="max-w-6xl mx-auto relative z-10">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-            Journey & <span className="gradient-text-purple">Credentials</span>
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Building expertise through continuous learning and real-world experience.
-          </p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Experience Column */}
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-[#FF1E56]/10 flex items-center justify-center">
-                <Briefcase className="w-5 h-5 text-[#FF1E56]" />
-              </div>
-              <h3 className="text-xl font-semibold text-white">Experience</h3>
-            </div>
-            
-            <div className="space-y-4">
-              {experiences.map((exp, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="feature-card p-6 group"
-                >
-                  <div className="flex items-start gap-4">
-                    <div 
-                      className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
-                      style={{ 
-                        backgroundColor: exp.type === 'work' ? 'rgba(255, 30, 86, 0.1)' : 'rgba(14, 165, 233, 0.1)',
-                        color: exp.type === 'work' ? '#FF1E56' : '#0EA5E9'
-                      }}
-                    >
-                      <exp.icon className="w-5 h-5" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 text-gray-500 text-sm mb-1">
-                        <Calendar className="w-3 h-3" />
-                        {exp.date}
-                      </div>
-                      <h4 className="font-semibold text-white group-hover:text-[#FF1E56] transition-colors">
-                        {exp.title}
-                      </h4>
-                      <p className="text-gray-400 text-sm">{exp.org}</p>
-                      <p className="text-gray-500 text-sm mt-2">{exp.description}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+    <section id="experience" className="container mx-auto py-24 md:py-32 max-w-5xl px-4">
+      <div className="flex flex-col items-center justify-center gap-4 text-center mb-16">
+        <BlurFade delay={0.2} inView>
+          <div className="inline-block rounded-lg bg-neutral-100 px-3 py-1 text-sm dark:bg-neutral-800">
+            Career & Education
           </div>
+        </BlurFade>
+        <BlurFade delay={0.3} inView>
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+            My Journey
+          </h2>
+        </BlurFade>
+      </div>
 
-          {/* Certifications Column */}
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-[#A855F7]/10 flex items-center justify-center">
-                <Award className="w-5 h-5 text-[#A855F7]" />
-              </div>
-              <h3 className="text-xl font-semibold text-white">Certifications</h3>
-            </div>
-            
-            <div className="space-y-3">
-              {certifications.map((cert, index) => (
-                <motion.a
-                  key={index}
-                  href={cert.link}
+      <div className="grid gap-16 md:grid-cols-2 lg:gap-24">
+        {/* Experience Column */}
+        <div>
+          <BlurFade delay={0.4} inView>
+            <h3 className="text-xl font-semibold mb-8 flex items-center gap-2">
+              Experience
+            </h3>
+          </BlurFade>
+
+          <div className="relative border-l border-neutral-200 dark:border-neutral-800 ml-3 space-y-12">
+            {experiences.map((item, index) => (
+              <BlurFade key={index} delay={0.4 + (index * 0.1)} inView>
+                <div className="pl-8 relative">
+                  <div className="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full border border-neutral-200 bg-white ring-4 ring-white dark:border-neutral-800 dark:bg-neutral-950 dark:ring-background transition-colors" />
+                  
+                  <div className="flex gap-4">
+                    <Image 
+                      src={item.logo} 
+                      alt={item.org} 
+                      width={80} 
+                      height={48} 
+                      className="h-12 w-auto rounded-lg object-contain shrink-0"
+                    />
+                    <div className="flex flex-col gap-1">
+                      <span className="text-xs font-medium text-neutral-500 uppercase tracking-wider dark:text-neutral-400">{item.date}</span>
+                      <h4 className="font-semibold text-lg text-neutral-900 dark:text-neutral-100">{item.title}</h4>
+                      <p className="text-sm font-medium text-primary/80">{item.org}</p>
+                      <p className="text-sm text-neutral-500 leading-relaxed dark:text-neutral-400 mt-1">{item.description}</p>
+                    </div>
+                  </div>
+                </div>
+              </BlurFade>
+            ))}
+          </div>
+        </div>
+
+        {/* Certifications Column */}
+        <div>
+          <BlurFade delay={0.5} inView>
+            <h3 className="text-xl font-semibold mb-8 flex items-center gap-2">
+              Certifications
+            </h3>
+          </BlurFade>
+
+          <div className="space-y-4">
+            {certifications.map((cert, index) => (
+             <BlurFade key={index} delay={0.5 + (index * 0.1)} inView>
+                <Link 
+                  href={cert.link} 
                   target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="feature-card p-5 group flex items-center gap-4"
+                  className="group flex items-center gap-4 rounded-xl border border-neutral-200 bg-white p-5 transition-all hover:bg-neutral-50 hover:shadow-md dark:border-neutral-800 dark:bg-transparent dark:hover:bg-neutral-900"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-[#A855F7]/10 flex items-center justify-center shrink-0">
-                    <Award className="w-5 h-5 text-[#A855F7]" />
+                  <Image 
+                    src={cert.logo} 
+                    alt={cert.issuer} 
+                    width={40} 
+                    height={40} 
+                    className="rounded-lg object-cover shrink-0"
+                  />
+                  <div className="flex-1 flex flex-col gap-1">
+                    <div className="flex items-center justify-between gap-4">
+                      <h4 className="font-medium text-neutral-900 dark:text-neutral-100 group-hover:text-primary transition-colors">
+                        {cert.title}
+                      </h4>
+                      <ExternalLink className="w-4 h-4 text-neutral-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                    </div>
+                    <p className="text-sm text-neutral-500 dark:text-neutral-400">{cert.issuer}</p>
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <h4 className="font-medium text-white group-hover:text-[#A855F7] transition-colors truncate">
-                      {cert.title}
-                    </h4>
-                    <p className="text-gray-500 text-sm">{cert.issuer}</p>
-                  </div>
-                  <ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-[#A855F7] transition-colors shrink-0 opacity-0 group-hover:opacity-100" />
-                </motion.a>
-              ))}
-            </div>
+                </Link>
+              </BlurFade>
+            ))}
           </div>
         </div>
       </div>
