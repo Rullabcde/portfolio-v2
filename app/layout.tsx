@@ -11,7 +11,7 @@ const siteConfig = {
   name: "Muhammad Choirul Rasyid",
   title: "Muhammad Choirul Rasyid | System Administrator & DevOps Engineer",
   description: "System Administrator & DevOps Enthusiast specializing in Linux, Kubernetes, CI/CD, and cloud infrastructure. Building reliable and scalable systems.",
-  url: "https://choirulrasyid.web.id",
+  url: "https://rullabcd.my.id",
   ogImage: "/og-image.png",
   keywords: [
     "Muhammad Choirul Rasyid",

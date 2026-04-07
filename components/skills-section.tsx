@@ -24,8 +24,6 @@ function SkillItem({ name }: { name: string }) {
   );
 }
 
-
-
 export function SkillsSection() {
   return (
     <section id="tech-stack" className="py-24 md:py-32 overflow-hidden">

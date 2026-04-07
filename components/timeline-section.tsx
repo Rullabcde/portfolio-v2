@@ -9,14 +9,14 @@ const experiences = [
   {
     title: "Junior System Administrator",
     org: "PT. Jetorbit Indonesia",
-    date: "May 2025 - Present",
+    date: "May 2025 - Feb 2026",
     description: "Managing server infrastructure and ensuring uptime. Implementing automated backup solutions and monitoring systems.",
     logo: "/jetorbit.jpg",
   },
   {
     title: "Sistem Informasi Jaringan dan Aplikasi",
     org: "SMK Negeri 2 Yogyakarta",
-    date: "2022 - Present",
+    date: "2022 - 2026",
     description: "Specializing in Linux administration, cloud networking, and infrastructure automation.",
     logo: "/smk2yk.jpeg",
   },

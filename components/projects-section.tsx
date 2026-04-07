@@ -19,11 +19,11 @@ const PROJECTS = [
     image: "/hacluster.jpeg",
   },
   {
-    title: "ObserveX",
+    title: "UptimeID",
     description: "Real-time monitoring and observability platform for infrastructure and applications. Provides comprehensive insights into system performance and health.",
-    tags: ["Next.js", "PostgreSQL", "InfluxDB", "Golang"],
-    href: "https://monitoring.choirulrasyid.web.id/",
-    image: "/observex.png",
+    tags: ["Next.js", "PostgreSQL", "Clickhouse", "Golang"],
+    href: "https://uptime.id/",
+    image: "/uptimeid.png",
   },
 ];
 
