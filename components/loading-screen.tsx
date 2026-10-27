@@ -20,7 +20,7 @@ export function LoadingScreen() {
 
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, 800);
 
     return () => {
       clearInterval(interval);

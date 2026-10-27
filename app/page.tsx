@@ -8,8 +8,8 @@ import { Navbar } from "@/components/navbar";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <div className="flex flex-col gap-16 pb-20">
+    <>
+      <div className="flex flex-col gap-16 pb-28">
         <HeroSection />
         <SkillsSection />
         <TimelineSection />
@@ -18,6 +18,6 @@ export default function Home() {
         <SpotifySection />
       </div>
       <Navbar />
-    </main>
+    </>
   );
 }

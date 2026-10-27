@@ -1,7 +1,10 @@
 "use client";
 
+import { ArrowUpRight } from "lucide-react";
 import BlurFade from "@/components/ui/blur-fade";
 import { ProjectCard } from "@/components/project-card";
+
+const GITHUB_URL = "https://github.com/Rullabcde";
 
 const PROJECTS = [
   {
@@ -29,32 +32,54 @@ const PROJECTS = [
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="container mx-auto px-4 py-24 md:px-6 lg:py-32">
-      <div className="flex flex-col items-center justify-center gap-4 text-center mb-16">
+    <section
+      id="projects"
+      aria-labelledby="projects-heading"
+      className="container mx-auto px-4 py-24 md:px-6 lg:py-32"
+    >
+      <div className="mb-14 flex flex-col items-center justify-center gap-4 text-center">
         <BlurFade delay={0.2} inView>
           <div className="inline-block rounded-lg bg-neutral-100 px-3 py-1 text-sm dark:bg-neutral-800">
             My Work
           </div>
         </BlurFade>
         <BlurFade delay={0.3} inView>
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+          <h2 id="projects-heading" className="text-3xl font-bold tracking-tighter sm:text-5xl">
             Selected Projects
           </h2>
         </BlurFade>
         <BlurFade delay={0.4} inView>
-          <p className="text-neutral-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-neutral-400">
-            A collection of projects I&apos;ve worked on, ranging from web apps to infrastructure.
+          <p className="max-w-[600px] text-neutral-500 md:text-lg/relaxed dark:text-neutral-400">
+            A collection of projects I&apos;ve worked on, ranging from web apps to
+            infrastructure.
           </p>
         </BlurFade>
       </div>
-      
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 max-w-5xl mx-auto">
+
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {PROJECTS.map((project, index) => (
           <BlurFade key={project.title} delay={0.4 + index * 0.1} inView>
             <ProjectCard {...project} />
           </BlurFade>
         ))}
       </div>
+
+      <BlurFade delay={0.7} inView>
+        <div className="mt-10 flex justify-center">
+          <a
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 rounded-full border border-neutral-200 px-5 py-2.5 text-sm font-medium text-neutral-700 transition-colors hover:border-neutral-300 hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-neutral-800 dark:text-neutral-300 dark:hover:border-neutral-700 dark:hover:bg-neutral-900"
+          >
+            More projects on GitHub
+            <ArrowUpRight
+              aria-hidden="true"
+              className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </a>
+        </div>
+      </BlurFade>
     </section>
   );
 }

@@ -1,117 +1,116 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { ArrowDown, Github, Mail } from "lucide-react";
 import BlurFade from "@/components/ui/blur-fade";
 import { ShinyButton } from "@/components/ui/shiny-button";
 
-const floatingAnimation = {
-  y: [0, -10, 0],
-  transition: {
-    duration: 4,
-    repeat: Infinity,
-    ease: "easeInOut" as const,
-  },
-};
+const GITHUB_URL = "https://github.com/Rullabcde";
+const EMAIL = "choirulrasyid09@gmail.com";
 
-const decorativeAnimation1 = {
-  rotate: [6, 8, 6],
-  transition: {
-    duration: 5,
-    repeat: Infinity,
-    ease: "easeInOut" as const,
-  },
-};
+const focusAreas = ["Linux", "Kubernetes", "CI/CD", "AWS"];
 
-const decorativeAnimation2 = {
-  rotate: [-6, -8, -6],
-  transition: {
-    duration: 6,
-    repeat: Infinity,
-    ease: "easeInOut" as const,
-  },
-};
+function scrollToId(id: string) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  el.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+}
 
 export function HeroSection() {
   return (
-    <section id="hero" className="relative flex flex-col-reverse items-center justify-center min-h-[90vh] w-full px-4 pt-32 md:pt-40 lg:flex-row lg:justify-between lg:px-20 lg:pt-0 max-w-7xl mx-auto gap-12">
-      
-      {/* Content */}
-      <div className="z-10 flex flex-col items-center gap-6 text-center lg:items-start lg:text-left lg:w-1/2">
-        <BlurFade delay={0.2} inView>
-          <motion.div 
-            className="rounded-full border border-neutral-200 bg-white/50 px-4 py-1.5 text-sm font-medium text-neutral-800 backdrop-blur-md dark:border-neutral-800 dark:bg-black/50 dark:text-neutral-200"
-            animate={{ 
-              boxShadow: ["0 0 0 0 rgba(59, 130, 246, 0)", "0 0 0 8px rgba(59, 130, 246, 0.1)", "0 0 0 0 rgba(59, 130, 246, 0)"] 
-            }}
-            transition={{ duration: 2, repeat: Infinity }}
+    <section
+      id="hero"
+      aria-labelledby="hero-heading"
+      className="relative mx-auto flex min-h-[80vh] w-full max-w-3xl flex-col items-center justify-center gap-6 px-4 pt-32 pb-16 text-center md:pt-40"
+    >
+      <BlurFade delay={0.2} inView>
+        <div className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white/50 px-4 py-1.5 text-sm font-medium text-neutral-800 backdrop-blur-md dark:border-neutral-800 dark:bg-black/50 dark:text-neutral-200">
+          <span aria-hidden="true" className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-60 motion-reduce:animate-none" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+          </span>
+          Available for work
+        </div>
+      </BlurFade>
+
+      <BlurFade delay={0.3} inView>
+        <h1
+          id="hero-heading"
+          className="text-5xl font-bold tracking-tighter sm:text-7xl xl:text-8xl/none"
+        >
+          Hi, I&apos;m{" "}
+          <motion.span
+            className="text-primary inline-block"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
           >
-            <span className="mr-2 inline-block h-2 w-2 rounded-full bg-green-500 animate-pulse" />
-            Available for work
-          </motion.div>
-        </BlurFade>
-        
-        <BlurFade delay={0.3} inView>
-          <h1 className="text-5xl font-bold tracking-tighter sm:text-7xl xl:text-8xl/none">
-            Hi, I&apos;m <motion.span 
-              className="text-primary inline-block"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >Choirul</motion.span>
-          </h1>
-        </BlurFade>
-        
-        <BlurFade delay={0.4} inView>
-          <p className="max-w-[600px] text-lg text-muted-foreground md:text-xl">
-            System Administrator &amp; DevOps Enthusiast.<br/>
-            Specializing in Linux, Cloud Infrastructure, and Automation.
-          </p>
-        </BlurFade>
-        
-        <BlurFade delay={0.5} inView>
-          <ShinyButton className="bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-900" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
+            Choirul
+          </motion.span>
+        </h1>
+      </BlurFade>
+
+      <BlurFade delay={0.4} inView>
+        <p className="max-w-[600px] text-lg text-muted-foreground md:text-xl">
+          System Administrator &amp; DevOps Enthusiast.
+          <br className="hidden sm:block" /> Specializing in Linux, Cloud
+          Infrastructure, and Automation.
+        </p>
+      </BlurFade>
+
+      <BlurFade delay={0.45} inView>
+        <ul className="flex flex-wrap justify-center gap-2">
+          {focusAreas.map((area) => (
+            <li
+              key={area}
+              className="rounded-full border border-neutral-200 px-3 py-1 text-xs font-medium text-neutral-600 dark:border-neutral-800 dark:text-neutral-400"
+            >
+              {area}
+            </li>
+          ))}
+        </ul>
+      </BlurFade>
+
+      <BlurFade delay={0.5} inView>
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <ShinyButton
+            className="bg-transparent hover:bg-neutral-100 dark:hover:bg-neutral-900"
+            onClick={() => scrollToId("projects")}
+          >
             View Projects
           </ShinyButton>
-        </BlurFade>
-      </div>
 
-      {/* Photo */}
-      <div className="z-10 lg:w-1/2 flex justify-center lg:justify-end">
-        <BlurFade delay={0.6} inView>
-          <motion.div 
-            className="relative h-[280px] w-[280px] sm:h-[320px] sm:w-[320px] lg:h-[400px] lg:w-[400px]"
-            animate={floatingAnimation}
+          <a
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg border border-neutral-200 px-4 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-900 dark:hover:text-white"
           >
-            <motion.div 
-              className="absolute inset-0 rounded-3xl bg-neutral-100 dark:bg-neutral-800/50" 
-              animate={decorativeAnimation1}
-            />
-            <motion.div 
-              className="absolute inset-0 rounded-3xl bg-neutral-200 dark:bg-neutral-800/50" 
-              animate={decorativeAnimation2}
-            />
-            
-            <motion.div 
-              className="relative h-full w-full overflow-hidden rounded-3xl border border-neutral-200 bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 shadow-2xl group"
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-               <Image
-                 src="/me.jpeg"
-                 alt="Choirul Rasyid"
-                 fill
-                 className="object-cover transition-transform duration-500 group-hover:scale-105"
-                 priority
-               />
-               
-               <div className="absolute inset-0 bg-linear-to-tr from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-            </motion.div>
-          </motion.div>
-        </BlurFade>
-      </div>
+            <Github className="h-4 w-4" aria-hidden="true" />
+            GitHub
+          </a>
 
-      {/* Background effect */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center dark:bg-black bg-white mask-[radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+          <a
+            href={`mailto:${EMAIL}`}
+            className="inline-flex items-center gap-2 rounded-lg border border-transparent px-4 py-2 text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:text-neutral-400 dark:hover:text-white"
+          >
+            <Mail className="h-4 w-4" aria-hidden="true" />
+            Email me
+          </a>
+        </div>
+      </BlurFade>
+
+      {/* Scroll hint */}
+      <motion.button
+        type="button"
+        onClick={() => scrollToId("tech-stack")}
+        aria-label="Scroll to tech stack"
+        className="absolute bottom-4 left-1/2 hidden -translate-x-1/2 text-neutral-400 transition-colors hover:text-neutral-700 lg:flex dark:hover:text-neutral-200"
+        animate={{ y: [0, 6, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <ArrowDown className="h-5 w-5" aria-hidden="true" />
+      </motion.button>
     </section>
   );
 }
